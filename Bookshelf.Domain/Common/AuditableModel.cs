@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bookshelf.Domain.Entity
+namespace Bookshelf.Domain.Common
 {
     public class AuditableModel
     {
