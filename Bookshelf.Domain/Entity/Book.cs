@@ -11,7 +11,13 @@ namespace Bookshelf.Domain.Entity
         public Author BookAuthor { get; set; }
         public PublishingHouse Publisher { get; set; }
         public int Pages { get; set; }
-        public List<Genre> genres;
+        public int PublishedYear { get; set; }
+        public List<Genre> Genres { get; set; }
         public Status BookStatus { get; set; }
+
+        public Book()
+        {
+            Genres = new List<Genre>();
+        }
     }
 }

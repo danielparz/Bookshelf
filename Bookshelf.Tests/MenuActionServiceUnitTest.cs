@@ -15,7 +15,6 @@ namespace Bookshelf.Tests
         public void InitializeTest()
         {
             MenuActionService menuActionService = new MenuActionService();
-            var mock = new Mock<IService<MenuActionService>>();
 
             menuActionService.Should().NotBeNull();
             menuActionService.GetMenuActionByMenuName("Main").Count.Should().Be(4);

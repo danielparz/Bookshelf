@@ -9,6 +9,11 @@ namespace Bookshelf.Domain.Entity
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-        public List<Book> Books;
+        public List<Book> Books { get; set; }
+
+        public Author()
+        {
+            Books = new List<Book>();
+        }
     }
 }
