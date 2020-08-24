@@ -1,4 +1,5 @@
 ﻿using Bookshelf.App.Abstract;
+using Bookshelf.Domain.Common;
 using Bookshelf.Domain.Entity;
 using System;
 using System.Collections.Generic;
@@ -9,37 +10,57 @@ namespace Bookshelf.App.Common
 {
     public class BaseService<T> : IService<T> where T : BaseEntity
     {
-        public List<T> Books { get; set; }
+        public List<T> Items { get; set; }
 
         public BaseService()
         {
-            Books = new List<T>();
+            Items = new List<T>();
         }
 
-        public int AddBook(T book)
+        public int AddItem(T item)
         {
-            Books.Add(book);
-            return book.Id;
+            Items.Add(item);
+            return item.Id;
         }
 
-        public List<T> GetAllBooks()
+        public int GetLastId()
         {
-            return Books;
+            int lastId;
+            if(Items.Any())
+            {
+                lastId = Items.OrderBy(p => p.Id).LastOrDefault().Id;
+            }
+            else
+            {
+                lastId = 0;
+            }
+            return lastId;
         }
 
-        public void RemoveBook(T book)
+        public List<T> GetAllItems()
         {
-            Books.Remove(book);
+            return Items;
         }
 
-        public int UpdateBook(T book)
+        public void RemoveItem(T item)
         {
-            var entity = Books.FirstOrDefault(p => p.Id == book.Id);
+            Items.Remove(item);
+        }
+
+        public int UpdateItem(T item)
+        {
+            var entity = Items.FirstOrDefault(p => p.Id == item.Id);
             if (entity != null)
             {
-                entity = book;
+                entity = item;
             }
             return entity.Id;
+        }
+
+        public T GetItemById(int id)
+        {
+            var entity = Items.FirstOrDefault(p => p.Id == id);
+            return entity;
         }
     }
 }
