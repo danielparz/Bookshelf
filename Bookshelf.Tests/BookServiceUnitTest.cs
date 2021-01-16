@@ -19,14 +19,12 @@ namespace Bookshelf.Tests
             var genres = new List<Genre>();
             var status = new Status() { Id = 1, Name = "Na półce" };
 
-            var bookService = new BookService(@"C:\Programowanie\Bookshelf\Bookshelf\Data\Books.json");
+            var bookService = new BookService();
 
             var bookId = bookService.AddBook("Pan Tadeusz", author, publisher, 300, 2010, genres, status);
 
             bookService.Items.Should().NotBeNull();
             bookId.Should().Be(1);
-
-            File.Delete(@"C:\Programowanie\Bookshelf\Bookshelf\Data\Books.json");
         }
     }
 }

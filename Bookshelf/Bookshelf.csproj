@@ -6,12 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bookshelf.App\Bookshelf.App.csproj" />
-    <ProjectReference Include="..\Bookshelf.Domain\Bookshelf.Domain.csproj" />
+    <Compile Remove="Data\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <None Remove="Data\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <ProjectReference Include="..\Bookshelf.App\Bookshelf.App.csproj" />
+    <ProjectReference Include="..\Bookshelf.Domain\Bookshelf.Domain.csproj" />
   </ItemGroup>
 
 </Project>
